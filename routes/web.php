@@ -17,4 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Fixed pages
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+Route::get('/commision', function () {
+    return view('commision');
+})->name('commision');
