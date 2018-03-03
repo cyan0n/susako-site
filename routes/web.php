@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 // Fixed pages
@@ -27,6 +23,6 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-Route::get('/commision', function () {
-    return view('commision');
-})->name('commision');
+Route::get('/commission', function () {
+    return view('commission');
+})->name('commission');
