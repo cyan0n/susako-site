@@ -1,8 +1,14 @@
+// Bulma Variables
+@import "~bulma/sass/utilities/initial-variables";
 
-// Body
-$body-bg: #f5f8fa;
+// Bulma functions
+@import "~bulma/sass/utilities/functions";
 
-// Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+// Custom initial variables
+
+// Custom derived variables
+
+// Title
+
+// Bulma derived variables
+@import "~bulma/sass/utilities/derived-variables";

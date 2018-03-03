@@ -6,9 +6,21 @@
 @import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~bulma/bulma';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+html, body {
+	min-height: 100%
+}
+
+#app {
+	display: grid;
+	grid-template-columns: 360px auto;
+	grid-template-areas: "sidebar main";
+	min-height: 100%;
+	#sidebar {
+		grid-area: sidebar;
+	}
+	#main {
+		grid-area:  main;
+	}
 }
