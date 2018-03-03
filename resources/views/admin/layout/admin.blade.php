@@ -11,12 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        {{-- Navigation --}}
-        @include('layout.sidebar')
+    <div id="admin">
         {{-- Content --}}
         <section id="main" class="section">
             @yield('content')
