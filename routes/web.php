@@ -11,8 +11,6 @@
 |
 */
 
-Auth::routes();
-
 // Fixed pages
 Route::get('/', function () {
     return view('home');
