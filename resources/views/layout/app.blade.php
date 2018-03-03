@@ -16,7 +16,7 @@
 <body>
     <div id="app">
         {{-- Navigation --}}
-        @include('layouts.sidebar')
+        @include('layout.sidebar')
         {{-- Content --}}
         <section id="main" class="section">
             @yield('content')
