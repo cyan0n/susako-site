@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        // List Macro Categories
+        $categories = Category::macros()->get();
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -24,7 +26,12 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        if (request()->id) {
+            $parent = Category::find(request()->id);
+            return view('admin.category.create', compact('parent'));
+        } else {
+            return view('admin.category.create');
+        }        
     }
 
     /**
@@ -35,7 +42,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required'
+        ]);
+        Category::create(request()->all());
+        return redirect()->action('CategoryController@index');
     }
 
     /**
@@ -46,7 +57,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $subCategories = Category::sub($category->id)->get();
+        return view('admin.category.view', compact('category', 'subCategories'));
     }
 
     /**
@@ -57,7 +69,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -69,7 +81,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update(request()->all());
+        $category->save();
+        return redirect()->action('CategoryController@index');
     }
 
     /**
@@ -80,6 +94,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $categories->delete();
+        return redirect()->action('CategoryController@index');
     }
 }
