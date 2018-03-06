@@ -8,6 +8,7 @@
 	</div>
 	<div class="column is-1">
 		{{ Form::open(['action' => ['CategoryController@destroy', $category]]) }}
+			@method('delete')
 			<input type="submit" value="Delete" class="button is-danger">
 		{{ Form::close() }}
 	</div>

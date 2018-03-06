@@ -46,7 +46,11 @@ class CategoryController extends Controller
             'name' => 'required'
         ]);
         Category::create(request()->all());
-        return redirect()->action('CategoryController@index');
+        if (request()->category_id) {
+            return redirect()->action('CategoryController@show', ['id' => request()->category_id]);
+        } else {
+            return redirect()->action('CategoryController@index');
+        }
     }
 
     /**
@@ -83,7 +87,11 @@ class CategoryController extends Controller
     {
         $category->update(request()->all());
         $category->save();
-        return redirect()->action('CategoryController@index');
+        if (request()->category_id) {
+            return redirect()->action('CategoryController@show', ['id' => request()->category_id]);
+        } else {
+            return redirect()->action('CategoryController@index');
+        }
     }
 
     /**
@@ -94,7 +102,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $categories->delete();
-        return redirect()->action('CategoryController@index');
+        $parent_id = $category->category_id;
+        $category->delete();
+        if ($parent_id) {
+            return redirect()->action('CategoryController@show', ['id' => $parent_id]);
+        } else {
+            return redirect()->action('CategoryController@index');
+        }
     }
 }
