@@ -61,8 +61,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $subCategories = Category::sub($category->id)->get();
-        return view('admin.category.view', compact('category', 'subCategories'));
+        return view('admin.category.view', compact('category', 'subCategories'));       
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Piece;
+use App\Category;
 use Illuminate\Http\Request;
 
 class PieceController extends Controller
@@ -12,7 +13,7 @@ class PieceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category)
     {
         //
     }
@@ -22,9 +23,9 @@ class PieceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Category $category)
     {
-        //
+        return view('admin.piece.create', compact('category'));
     }
 
     /**
@@ -33,9 +34,15 @@ class PieceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Category $category)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required'
+        ]);
+        $id = $category->pieces()->create(request()->all())->id;
+        // Save file
+        $request->file('image')->storeAs('image/', $id, 'public');
+        return redirect()->action('CategoryController@show', $category);
     }
 
     /**
@@ -44,7 +51,7 @@ class PieceController extends Controller
      * @param  \App\Piece  $piece
      * @return \Illuminate\Http\Response
      */
-    public function show(Piece $piece)
+    public function show(Category $category, Piece $piece)
     {
         //
     }
@@ -55,7 +62,7 @@ class PieceController extends Controller
      * @param  \App\Piece  $piece
      * @return \Illuminate\Http\Response
      */
-    public function edit(Piece $piece)
+    public function edit(Category $category, Piece $piece)
     {
         //
     }
@@ -67,7 +74,7 @@ class PieceController extends Controller
      * @param  \App\Piece  $piece
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Piece $piece)
+    public function update(Request $request, Category $category, Piece $piece)
     {
         //
     }
@@ -78,7 +85,7 @@ class PieceController extends Controller
      * @param  \App\Piece  $piece
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Piece $piece)
+    public function destroy(Category $category, Piece $piece)
     {
         //
     }

@@ -5,5 +5,8 @@ Auth::routes();
 // View list of macro categories
 Route::get('/', 'CategoryController@index');
 
-// Macro categories
+// Categories
 Route::resource('categories', 'CategoryController');
+
+// Pieces (Images)
+Route::resource('categories/{category}/image', 'PieceController');
