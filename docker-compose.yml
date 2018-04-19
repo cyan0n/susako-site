@@ -1,10 +1,19 @@
 version: '3'
 services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/proxy.conf
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
   app:
-    image: hitalos/laravel:latest
+    image: esimple/laravel:latest
     links:
       - db
     volumes:
+      - ./public:/var/www/html
       - ./:/var/www
     environment:
       DB_HOST: "db"
@@ -12,16 +21,18 @@ services:
       DB_USERNAME: "susako"
       DB_PASSWORD: "secret"
       DB_CONNECTION: "mysql"
-    ports:
-        - "80:80"
+      APP_URL: http://susako.local
+      VIRTUAL_HOST: "susako.local"
+      XDEBUG_CONFIG: remote_host=${LOCAL_IP}
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
       - db
-    ports:
-      - "8000:80"
     environment:
       PMA_HOST: "db"
+      VIRTUAL_HOST: "db.susako.local"
+
   db:
     image: mysql:5.7
     volumes:
@@ -31,7 +42,6 @@ services:
       MYSQL_DATABASE: "homestead"
       MYSQL_USER: "susako"
       MYSQL_PASSWORD: "secret"
-    ports:
-        - "3306:3306"
+
 volumes:
   dbdata:
