@@ -8,5 +8,5 @@ Route::get('/', 'CategoryController@index');
 // Categories
 Route::resource('categories', 'CategoryController');
 
-// Pieces (Images)
-Route::resource('categories/{category}/image', 'PieceController');
+// Artworks (Images)
+Route::resource('categories/{category}/image', 'ArtWorkController');

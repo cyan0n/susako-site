@@ -11,7 +11,7 @@
 		<a href="{{ action('CategoryController@create', ['id' => $category->id]) }}">Create Sub</a>
 		@each('admin.category.item', $category->subCategories, 'category')
 	@endempty
-	{{-- Pieces --}}
-	<a href="{{ action('PieceController@create', ['id' => $category->id]) }}">Add Image</a>
-	@each('admin.piece.item', $category->pieces, 'piece')
+	{{-- Artworks --}}
+	<a href="{{ action('ArtworkController@create', ['id' => $category->id]) }}">Add Image</a>
+	@each('admin.artwork.item', $category->artworks, 'artwork')
 @endsection

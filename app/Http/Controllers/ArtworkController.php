@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Piece;
+use App\Artwork;
 use App\Category;
 use Illuminate\Http\Request;
 
-class PieceController extends Controller
+class ArtworkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class PieceController extends Controller
      */
     public function create(Category $category)
     {
-        return view('admin.piece.create', compact('category'));
+        return view('admin.artwork.create', compact('category'));
     }
 
     /**
@@ -39,7 +39,7 @@ class PieceController extends Controller
         $this->validate(request(), [
             'name' => 'required'
         ]);
-        $id = $category->pieces()->create(request()->all())->id;
+        $id = $category->artworks()->create(request()->all())->id;
         // Save file
         $request->file('image')->storeAs('image/', $id, 'public');
         return redirect()->action('CategoryController@show', $category);
@@ -48,10 +48,10 @@ class PieceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Piece  $piece
+     * @param  \App\Artwork  $artwork
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category, Piece $piece)
+    public function show(Category $category, Artwork $artwork)
     {
         //
     }
@@ -59,10 +59,10 @@ class PieceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Piece  $piece
+     * @param  \App\Artwork  $artwork
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category, Piece $piece)
+    public function edit(Category $category, Artwork $artwork)
     {
         //
     }
@@ -71,10 +71,10 @@ class PieceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Piece  $piece
+     * @param  \App\Artwork  $artwork
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category, Piece $piece)
+    public function update(Request $request, Category $category, Artwork $artwork)
     {
         //
     }
@@ -82,10 +82,10 @@ class PieceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Piece  $piece
+     * @param  \App\Artwork  $artwork
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category, Piece $piece)
+    public function destroy(Category $category, Artwork $artwork)
     {
         //
     }

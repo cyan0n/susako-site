@@ -35,9 +35,9 @@ class Category extends Model
         return $this->hasMany('App\Category');
     }
 
-    // Art Pieces
-    public function pieces()
+    // Artworks
+    public function artwork()
     {
-        return $this->hasMany('App\Piece');
+        return $this->hasMany('App\Artwork');
     }
 }

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Piece extends Model
+class Artwork extends Model
 {
     protected $fillable = [
         'name',
@@ -21,8 +21,8 @@ class Piece extends Model
 
     public function image()
     {
-        if (Storage::disk('public')->exists('images/'.$this->id)) {
-            return Storage::disk('public')->url('images/'.$this->id);
+        if (Storage::disk('public')->exists('image/'.$this->id)) {
+            return Storage::disk('public')->url('image/'.$this->id);
         }
     }
 }
