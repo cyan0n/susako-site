@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // List Macro Categories
+        // List all "Main" Categories
         $categories = Category::macros()->get();
         return view('admin.category.index', compact('categories'));
     }

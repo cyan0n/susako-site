@@ -4,13 +4,25 @@
 @endisset
 
 {{-- Name --}}
-{{ Form::label('name', 'Name') }}
-{{ Form::text('name') }}
+<div class="field">
+	{{ Form::label('name', 'Name', ['class' => 'label']) }}
+	<div class="control">
+		{{ Form::text('name', null, ['class' => 'input']) }}
+	</div>
+</div>
 
 {{-- Urlname --}}
-{{ Form::label('url_name', 'URL Name') }}
-{{ Form::text('url_name') }}
+<div class="field">
+	{{ Form::label('url_name', 'URL Name', ['class' => 'label']) }}
+	<div class="control">
+		{{ Form::text('url_name', null, ['class' => 'input']) }}
+	</div>
+</div>
 
 {{-- Description --}}
-{{ Form::label('description', 'Description') }}
-{{ Form::textarea('description') }}
+<div class="field">
+	{{ Form::label('description', 'Description', ['class' => 'label']) }}
+	<div class="control">
+		{{ Form::textarea('description', null, ['class' => 'textarea']) }}
+	</div>
+</div>

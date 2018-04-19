@@ -2,9 +2,12 @@
 
 @section('content')
 <div class="container">
-    <h2 class="title">Admin Home</h2>
+    <h2 class="title">Categories</h2>
+
     {{-- Category List --}}
-    <a href="{{ action('CategoryController@create') }}">Create Macro</a>
+    <a href="{{ action('CategoryController@create') }}">Create New Category</a>
+
     @each('admin.category.item', $categories, 'category')
+
 </div>
 @endsection

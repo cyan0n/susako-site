@@ -36,7 +36,7 @@ class Category extends Model
     }
 
     // Artworks
-    public function artwork()
+    public function artworks()
     {
         return $this->hasMany('App\Artwork');
     }

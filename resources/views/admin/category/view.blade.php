@@ -6,12 +6,13 @@
 	<p>
 		{{ $category->description }}
 	</p>
+	{{-- Check if has a "parent" Category --}}
 	@empty ($category->category_id)
 		{{-- Sub Categories --}}
-		<a href="{{ action('CategoryController@create', ['id' => $category->id]) }}">Create Sub</a>
+		<a href="{{ action('CategoryController@create', ['id' => $category->id]) }}">Create New Sub-Category</a>
 		@each('admin.category.item', $category->subCategories, 'category')
 	@endempty
 	{{-- Artworks --}}
 	<a href="{{ action('ArtworkController@create', ['id' => $category->id]) }}">Add Image</a>
-	@each('admin.artwork.item', $category->artworks, 'artwork')
+	@each('admin.artworks.item', $category->artworks, 'artwork')
 @endsection

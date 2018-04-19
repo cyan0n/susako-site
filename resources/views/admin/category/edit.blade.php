@@ -6,7 +6,12 @@
 	{{ Form::model($category, ['action' => ['CategoryController@update', $category]]) }}
 		@method('put')
 		@include('admin.category.form')
-		{{ Form::submit('Save')}}
+        <div class="field is-grouped">
+            <div class="control">
+				{{ Form::submit('Save', ["class" => "button is-primary"])}}
+            </div>
+        </div>
+		
     {{ Form::close() }}
 </div>
 @endsection
