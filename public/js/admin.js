@@ -43199,8 +43199,22 @@ window.Vue = __webpack_require__(33);
 Vue.component('example-component', __webpack_require__(36));
 
 var admin = new Vue({
-  el: '#admin'
+	el: '#admin',
+	data: {
+		filename: ''
+	},
+	methods: {
+		chosenImage: function chosenImage(event) {
+			this.filename = event.target.files[0].name;
+		}
+	}
 });
+/*var file = document.getElementById("file");
+file.onchange = function () {
+	if (file.files.length > 0) {
+		document.getElementById('filename').innerHTML = file.files[0].name;
+	}
+};*/
 
 /***/ })
 /******/ ]);
