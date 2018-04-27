@@ -15,13 +15,16 @@
 </head>
 <body>
     <div id="admin">
+        <a href="{{ route('dashboard') }}" class="button">Dashboard</a>
         {{-- Content --}}
         <section id="main" class="section">
+            {{-- TODO: Add breadcrumbs --}}
             @yield('content')
         </section>
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/admin.js') }}"></script>
+    <script src="https://use.fontawesome.com/1de8b76bed.js"></script>
 </body>
 </html>

@@ -64,7 +64,7 @@ class ArtworkController extends Controller
      */
     public function edit(Category $category, Artwork $artwork)
     {
-        //
+        return view('admin.artwork.edit', compact('category', 'artwork'));
     }
 
     /**
@@ -76,7 +76,10 @@ class ArtworkController extends Controller
      */
     public function update(Request $request, Category $category, Artwork $artwork)
     {
-        //
+        $artwork->update(request()->all());
+        $artwork->save();
+
+        return redirect()->action('CategoryController@show', $category);
     }
 
     /**
@@ -87,6 +90,7 @@ class ArtworkController extends Controller
      */
     public function destroy(Category $category, Artwork $artwork)
     {
-        //
+        $artwork->delete();
+        return redirect()->action('CategoryController@show', $category);
     }
 }

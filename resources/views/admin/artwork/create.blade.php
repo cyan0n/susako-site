@@ -5,7 +5,11 @@
     <h2 class="title">New Image</h2>
     {{ Form::open(['action' => ['ArtworkController@store', $category->id], 'files' => true]) }}
         @include('admin.artwork.form')
-        <input type="submit" value="Create">
+        <div class="field is-grouped">
+            <div class="control">
+                {{ Form::submit('Create', ["class" => "button is-primary"])}}
+            </div>
+        </div>
     {{ Form::close() }}
 </div>
 @endsection

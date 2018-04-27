@@ -14,5 +14,5 @@
 	@endempty
 	{{-- Artworks --}}
 	<a href="{{ action('ArtworkController@create', ['id' => $category->id]) }}">Add Image</a>
-	@each('admin.artworks.item', $category->artworks, 'artwork')
+	@each('admin.artwork.item', $category->artworks, 'artwork')
 @endsection

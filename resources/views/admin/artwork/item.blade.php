@@ -1,17 +1,15 @@
-{{ $artwork->name }}
-<img src="{{ $artwork->image() }}" alt="{{ $artwork->name }}" width="200px">
-
 <div class="columns">
 	<div class="column">{{ $artwork->name }}</div>
 	<div class="column"></div>
 	<div class="column is-1">
-		<a href="{{ action('CategoryController@show', ['id' => $category->id]) }}">Open</a>
+	<img src="{{ $artwork->image() }}">
+		{{-- <a href="{{ action('ArtworkController@show', ['id' => $artwork->id]) }}">Open</a> --}}
 	</div>
 	<div class="column is-1">
-		<a href="{{ action('CategoryController@edit', ['id' => $category->id]) }}">Edit</a>
+		<a href="{{ action('ArtworkController@edit', [$artwork->category, $artwork]) }}">Edit</a>
 	</div>
 	<div class="column is-1">
-		{{ Form::open(['action' => ['CategoryController@destroy', $category]]) }}
+		{{ Form::open(['action' => ['ArtworkController@destroy', $artwork->category, $artwork]]) }}
 			@method('delete')
 			<input type="submit" value="Delete" class="button is-danger">
 		{{ Form::close() }}
