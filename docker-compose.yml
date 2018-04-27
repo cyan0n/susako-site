@@ -1,47 +1,18 @@
 version: '3'
 services:
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/proxy.conf
-      - /var/run/docker.sock:/tmp/docker.sock:ro
 
   app:
     image: esimple/laravel:latest
-    links:
-      - db
     volumes:
       - ./public:/var/www/html
       - ./:/var/www
+    network_mode: bridge
     environment:
-      DB_HOST: "db"
-      DB_DATABASE: "homestead"
+      DB_HOST: "host.docker.internal"
+      DB_DATABASE: "susako"
       DB_USERNAME: "susako"
       DB_PASSWORD: "secret"
       DB_CONNECTION: "mysql"
-      APP_URL: http://susako.local
-      VIRTUAL_HOST: "susako.local"
+      APP_URL: http://susako.dock
+      VIRTUAL_HOST: "susako.dock"
       XDEBUG_CONFIG: remote_host=${LOCAL_IP}
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - db
-    environment:
-      PMA_HOST: "db"
-      VIRTUAL_HOST: "db.susako.local"
-
-  db:
-    image: mysql:5.7
-    volumes:
-      - dbdata:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: "demo123"
-      MYSQL_DATABASE: "homestead"
-      MYSQL_USER: "susako"
-      MYSQL_PASSWORD: "secret"
-
-volumes:
-  dbdata:
