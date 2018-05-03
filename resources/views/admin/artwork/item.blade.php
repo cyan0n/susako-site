@@ -1,17 +1,19 @@
-<div class="columns">
-	<div class="column">{{ $artwork->name }}</div>
-	<div class="column"></div>
-	<div class="column is-1">
-	<img src="{{ $artwork->image() }}">
-		{{-- <a href="{{ action('ArtworkController@show', ['id' => $artwork->id]) }}">Open</a> --}}
+<div class="level">
+	<div class="level-left">
+		<h5 class="level-item subtitle is-5">{{ $artwork->name }}</h5>
 	</div>
-	<div class="column is-1">
-		<a href="{{ action('ArtworkController@edit', [$artwork->category, $artwork]) }}">Edit</a>
-	</div>
-	<div class="column is-1">
-		{{ Form::open(['action' => ['ArtworkController@destroy', $artwork->category, $artwork]]) }}
-			@method('delete')
-			<input type="submit" value="Delete" class="button is-danger">
-		{{ Form::close() }}
+	<div class="level-right">
+		<div class="level-item">
+			<img src="{{ $artwork->image() }}" style="height:50px">
+		</div>
+		<div class="level-item">
+			<a href="{{ action('ArtworkController@edit', [$artwork->category, $artwork]) }}" class="button is-success">Edit</a>
+		</div>
+		<div class="level-item">
+			{{ Form::open(['action' => ['ArtworkController@destroy', $artwork->category, $artwork]]) }}
+				@method('delete')
+				<input type="submit" value="Delete" class="button is-danger">
+			{{ Form::close() }}
+		</div>
 	</div>
 </div>

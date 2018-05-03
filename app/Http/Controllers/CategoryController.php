@@ -8,19 +8,19 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display list of all "Main" Categories
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // List all "Main" Categories
         $categories = Category::macros()->get();
+
         return view('admin.category.index', compact('categories'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Category
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,23 +28,24 @@ class CategoryController extends Controller
     {
         if (request()->id) {
             $parent = Category::find(request()->id);
-            return view('admin.category.create', compact('parent'));
-        } else {
-            return view('admin.category.create');
-        }        
+        }
+
+        return view('admin.category.create', compact('parent'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Category in the Database
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        // TODO: expand form validation, custom validator
         $this->validate(request(), [
             'name' => 'required'
         ]);
+
         Category::create(request()->all());
         if (request()->category_id) {
             return redirect()->action('CategoryController@show', ['id' => request()->category_id]);

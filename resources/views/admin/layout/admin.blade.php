@@ -15,7 +15,11 @@
 </head>
 <body>
     <div id="admin">
-        <a href="{{ route('dashboard') }}" class="button">Dashboard</a>
+        <nav class="navbar is-primary">
+            <div class="navbar-brand">
+                <a href="{{ route('dashboard') }}" class="navbar-item">Susako Admin</a>
+            </div>
+        </nav>
         {{-- Content --}}
         <section id="main" class="section">
             {{-- TODO: Add breadcrumbs --}}

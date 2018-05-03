@@ -1,13 +1,21 @@
 @extends('admin.layout.admin')
 
 @section('content')
-<div class="container">
-    <h2 class="title">Categories</h2>
+    <div class="container">
 
-    {{-- Category List --}}
-    <a href="{{ action('CategoryController@create') }}">Create New Category</a>
+        <div class="level">
+            <div class="level-left">
+                <h2 class="level-item title is-2">Categories</h2>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    <a href="{{ action('CategoryController@create') }}" class="button is-primary">Create New Category</a>
+                </div>
+            </div>
+        </div>
 
-    @each('admin.category.item', $categories, 'category')
+        {{-- Category List --}}
+        @each('admin.category.item', $categories, 'category')
 
-</div>
+    </div>
 @endsection
