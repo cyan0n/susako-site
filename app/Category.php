@@ -13,6 +13,11 @@ class Category extends Model
         'category_id'
     ];
 
+    public static function main()
+    {
+        return static::where('category_id', null)->get();
+    }
+
     public function scopeMacros($query)
     {
         return $query->where('category_id', NULL);

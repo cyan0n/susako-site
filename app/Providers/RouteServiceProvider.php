@@ -23,9 +23,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+
+        Route::bind('main_category', function ($value) {
+            return \App\Category::where('url_name', $value)->where('category_id', null)->first() ?? abort(404);
+        });
+
+        Route::bind('sub_category', function ($value) {
+            return \App\Category::where('url_name', $value)->where('category_id', '<>', null)->first() ?? abort(404);
+        });
     }
 
     /**
@@ -37,9 +43,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
-
         $this->mapAdminRoutes();
+
+        $this->mapWebRoutes();
     }
 
     /**
