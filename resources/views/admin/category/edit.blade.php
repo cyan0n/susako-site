@@ -12,8 +12,8 @@
 				{{ Form::label('thumbnail', 'Thumbnail', ['class' => 'label']) }}
 				{{--<thumbnail-select :connected="'thumbnail'"></thumbnail-select>
 				{{ Form::select('thumbnail', $category->artworks()->get()->keyBy('id'), null, ['class' => 'is-hidden']) }}--}}
-				<select-thumbnail name="thumbnail"
-					:images="{{ $category->artworks()->get()->keyBy('id')->pluck('id') }}"
+				<select-thumbnail name="thumbnail_id"
+					:images="{{ $options }}"
 					folder="http://susako.dock/storage/image/"
 					@if ($category->thumbnail)
 						value="{{ $category->thumbnail->id }}"

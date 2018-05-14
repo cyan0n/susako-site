@@ -11,7 +11,7 @@ class Category extends Model
         'url_name',
         'description',
         'category_id',
-        'thumbnail'
+        'thumbnail_id'
     ];
 
     public static function main()
