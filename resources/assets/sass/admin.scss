@@ -11,6 +11,35 @@
 html, body {
 	min-height: 100%
 }
-
+* {
+	box-sizing: border-box;
+}
 #admin {
+	width: 100%;
+}
+
+.thumbnail-select {
+	display: flex;
+	justify-content: space-between;
+	.thumbnail-option {
+		cursor: pointer;
+		flex-basis: 20%;
+		padding: 5px;
+		border-radius: 5px;
+		border: 1px solid #afafaf;
+		align-self: center;
+		background: $background;
+		transition: background 0.3s;
+
+		&:hover {
+			background: $info;
+		}
+		&.selected {
+			background: $primary;
+		}
+
+		img {
+			display: block;
+		}
+	}
 }

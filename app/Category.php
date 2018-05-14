@@ -10,7 +10,8 @@ class Category extends Model
         'name',
         'url_name',
         'description',
-        'category_id'
+        'category_id',
+        'thumbnail'
     ];
 
     public static function main()
@@ -31,7 +32,7 @@ class Category extends Model
     // Parent Categories
     public function macroCategory()
     {
-        return $this->belognsTo('App\Category');
+        return $this->belongsTo('App\Category', 'category_id');
     }
 
     // Child Categories
@@ -44,5 +45,11 @@ class Category extends Model
     public function artworks()
     {
         return $this->hasMany('App\Artwork');
+    }
+
+    // Thumbnail
+    public function thumbnail()
+    {
+        return $this->belongsTo('App\Artwork');
     }
 }

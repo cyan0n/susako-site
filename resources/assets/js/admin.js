@@ -14,6 +14,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('select-thumbnail', require('./components/SelectThumbnail.vue'));
 
 const admin = new Vue({
 	el: '#admin',
