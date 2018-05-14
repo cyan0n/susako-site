@@ -1,6 +1,8 @@
 {{-- Parent --}}
 @isset($parent)
 	{{ Form::hidden('category_id', $parent->id) }}
+@else
+	{{ Form::hidden('category_id') }}
 @endisset
 
 {{-- Name --}}
