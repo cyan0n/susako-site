@@ -8,6 +8,9 @@
 // Bootstrap
 @import '~bulma/bulma';
 
+// Utils
+@import "variables";
+
 html, body {
 	min-height: 100%
 }
@@ -22,5 +25,11 @@ html, body {
 	}
 	#main {
 		grid-area:  main;
+	}
+}
+
+.artwork-gallery {
+	.artwork {
+		border: 1px solid lightcyan;
 	}
 }

@@ -13,7 +13,7 @@
 		<h5 class="subtitle is-5">Images</h5>
 		<artwork-gallery>
 			@foreach ($category->artworks as $artwork)
-				<img src="{{ $artwork->image() }}" alt="">
+				<artwork image="{{ $artwork->image() }}" index="{{ $loop->index }}"></artwork>
 			@endforeach
 		</artwork-gallery>
 	</div>
