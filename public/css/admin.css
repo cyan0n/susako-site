@@ -11535,17 +11535,23 @@ body {
   -ms-flex-preferred-size: 20%;
       flex-basis: 20%;
   padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #afafaf;
+  border-radius: 3px;
+  border: 1px solid #dbdbdb;
   -ms-flex-item-align: center;
       align-self: center;
   background: whitesmoke;
   -webkit-transition: background 0.3s;
   transition: background 0.3s;
+  margin-right: 0.75rem;
+}
+
+.thumbnail-select .thumbnail-option:last-child {
+  margin-right: 0;
 }
 
 .thumbnail-select .thumbnail-option:hover {
   background: #209cee;
+  border: 1px solid #b5b5b5;
 }
 
 .thumbnail-select .thumbnail-option.selected {

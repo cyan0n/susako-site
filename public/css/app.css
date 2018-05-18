@@ -6255,8 +6255,8 @@ a.dropdown-item.is-active {
 }
 
 .menu-list a {
-  border-radius: 2px;
-  color: #4a4a4a;
+  border-radius: 0;
+  color: whitesmoke;
   display: block;
   padding: 0.5em 0.75em;
 }
@@ -11509,7 +11509,7 @@ label.panel-block:hover {
 
 html,
 body {
-  min-height: 100%;
+  height: 100%;
 }
 
 #app {
@@ -11521,13 +11521,52 @@ body {
 
 #app #sidebar {
   grid-area: sidebar;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #242424;
+  color: whitesmoke;
+}
+
+#app #sidebar .menu {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 #app #main {
   grid-area: main;
 }
 
+.artwork-gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.artwork-gallery .columns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.artwork-gallery .artwork-gallery-column {
+  width: 33.33%;
+  padding: 0 3px;
+}
+
 .artwork-gallery .artwork {
-  border: 1px solid lightcyan;
+  cursor: pointer;
+  border: 1px solid #7a7a7a;
+  padding: 5px;
+  margin-bottom: 6px;
+}
+
+.artwork-gallery .artwork img {
+  display: block;
 }
 

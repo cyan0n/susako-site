@@ -25,14 +25,19 @@ html, body {
 		cursor: pointer;
 		flex-basis: 20%;
 		padding: 5px;
-		border-radius: 5px;
-		border: 1px solid #afafaf;
+		border-radius: $radius;
+		border: 1px solid $border;
 		align-self: center;
 		background: $background;
 		transition: background 0.3s;
+		margin-right: $size-7;
 
+		&:last-child {
+			margin-right: 0;
+		}
 		&:hover {
 			background: $info;
+			border: 1px solid $border-hover;
 		}
 		&.selected {
 			background: $primary;

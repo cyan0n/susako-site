@@ -5,6 +5,9 @@
 // Variables
 @import "variables";
 
+$menu-item-color: $white-ter;
+$menu-item-radius: 0;
+
 // Bootstrap
 @import '~bulma/bulma';
 
@@ -12,7 +15,7 @@
 @import "variables";
 
 html, body {
-	min-height: 100%
+	height: 100%
 }
 
 #app {
@@ -20,16 +23,40 @@ html, body {
 	grid-template-columns: 360px auto;
 	grid-template-areas: "sidebar main";
 	min-height: 100%;
+
 	#sidebar {
 		grid-area: sidebar;
+		display: flex;
+		flex-direction: column;
+		background: $black-ter;
+		color: $white-ter;
+
+		.menu {
+			flex-grow: 1;
+		}
 	}
+
 	#main {
 		grid-area:  main;
 	}
 }
 
 .artwork-gallery {
+	display: flex;
+	.columns {
+		display: flex;
+	}
+	.artwork-gallery-column {
+		width: 33.33%;
+		padding: 0 3px;
+	}
 	.artwork {
-		border: 1px solid lightcyan;
+		cursor: pointer;
+		border: 1px solid $grey;
+		padding: 5px;
+		margin-bottom: 6px;
+		img {
+			display: block
+		}
 	}
 }

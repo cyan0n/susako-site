@@ -1,5 +1,7 @@
 <template>
-	<img class="artwork" :src="image" @click="click" />
+	<div ref="wrapper" class="artwork">
+		<img ref="image" :src="image" @click="click" @load="loaded"/>
+	</div>
 </template>
 
 <script>
@@ -13,8 +15,11 @@
 			this.EventBus.$emit('image', this.image);
 		},
 		methods: {
-			click: function(event) {
+			click() {
 				this.EventBus.$emit('open', this.index);
+			},
+			loaded() {
+				this.EventBus.$emit('load', this.$refs.wrapper, this.image, this.index);
 			}
 		}
 	}
