@@ -52,4 +52,16 @@ class Category extends Model
     {
         return $this->belongsTo('App\Artwork');
     }
+
+    // Image Directory Path
+    public function path()
+    {
+        $path = '';
+        // Have parent category?
+        if (!empty($this->category_id)) {
+            $path .= $this->macroCategory->url_name.'/';
+        }
+        $path .= $this->url_name.'/';
+        return $path;
+    }
 }

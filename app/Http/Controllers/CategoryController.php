@@ -86,6 +86,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        // TODO: rename directory if url_name changed
         $category->update(request()->all());
         $category->save();
         if (request()->category_id) {

@@ -32,8 +32,13 @@ class Artwork extends Model
 
     public function image()
     {
-        if (Storage::disk('public')->exists('image/'.$this->id)) {
-            return Storage::disk('public')->url('image/'.$this->id);
+        if (Storage::disk('public')->exists('image/'.$this->path())) {
+            return Storage::disk('public')->url('image/'.$this->path());
         }
+    }
+
+    public function path()
+    {
+        return $this->category->path() . $this->url_name;
     }
 }

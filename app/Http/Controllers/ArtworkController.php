@@ -39,9 +39,11 @@ class ArtworkController extends Controller
         $this->validate(request(), [
             'name' => 'required'
         ]);
-        $id = $category->artworks()->create(request()->all())->id;
+        // TODO: check if path already exists
+        $path = $category->path() . $request->input('url_name');
+        $category->artworks()->create(request()->all())->id;
         // Save file
-        $request->file('image')->storeAs('image/', $id, 'public');
+        $request->file('image')->storeAs('image/', $path, 'public');
         return redirect()->action('CategoryController@show', $category);
     }
 
