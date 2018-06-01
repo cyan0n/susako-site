@@ -37,13 +37,18 @@ class ArtworkController extends Controller
     public function store(Request $request, Category $category)
     {
         $this->validate(request(), [
-            'name' => 'required'
+            'name' => 'required',
+            'image' => 'required'
         ]);
         // TODO: check if path already exists
-        $path = $category->path() . $request->input('url_name');
-        $category->artworks()->create(request()->all())->id;
+        $artwork = $category->artworks()->create(
+            array_merge(
+                request()->all(),
+                ['extension' => request()->image->extension()]
+            )
+        );
         // Save file
-        $request->file('image')->storeAs('image/', $path, 'public');
+        $request->file('image')->storeAs('image/', $artwork->path(), 'public');
         return redirect()->action('CategoryController@show', $category);
     }
 

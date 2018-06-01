@@ -11,6 +11,7 @@ class Artwork extends Model
         'name',
         'url_name',
         'description',
+        'extension',
         'category_id'
     ];
 
@@ -39,6 +40,6 @@ class Artwork extends Model
 
     public function path()
     {
-        return $this->category->path() . $this->url_name;
+        return $this->category->path() . $this->url_name . '.' . $this->extension;
     }
 }
