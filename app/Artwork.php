@@ -14,15 +14,16 @@ class Artwork extends Model
         'extension',
         'category_id'
     ];
+    protected $appends = ['path'];
 
     public function scopeByCategory($query, $category)
     {
         return $query
             ->where('category_id', $category->id)
-            ->whereIn('category_id', function ($query) {
+            ->whereIn('category_id', function ($query) use ($category) {
                 $query->select('id')
                     ->from(with(new \App\Category)->getTable())
-                    ->where('category_id', 1);
+                    ->where('category_id', $category->id);
             }, 'or');
     }
 
@@ -42,4 +43,11 @@ class Artwork extends Model
     {
         return $this->category->path() . $this->url_name . '.' . $this->extension;
     }
+
+    public function getPathAttribute()
+    {
+        return $this->attributes['path'] = $this->path();
+    }
+
+    // TODO: fullpath function and attribute, images directory + path()
 }

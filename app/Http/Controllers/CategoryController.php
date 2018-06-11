@@ -73,8 +73,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $options = \App\Artwork::ByCategory($category)->get()->keyBy('id')->pluck('id');
-        return view('admin.category.edit', compact('category', 'options'));
+        $artworks = \App\Artwork::ByCategory($category)->get()->keyBy('id');
+        return view('admin.category.edit', compact('category', 'artworks'));
     }
 
     /**

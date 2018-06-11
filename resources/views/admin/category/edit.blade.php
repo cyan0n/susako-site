@@ -7,20 +7,17 @@
 			@method('put')
 			@include('admin.category.form')
 
-			{{-- Thumbnail --}}
+			{{-- Thumbnail Selection --}}
 			<div class="field">
 				{{ Form::label('thumbnail', 'Thumbnail', ['class' => 'label']) }}
-				{{--<thumbnail-select :connected="'thumbnail'"></thumbnail-select>
-				{{ Form::select('thumbnail', $category->artworks()->get()->keyBy('id'), null, ['class' => 'is-hidden']) }}--}}
 				<select-thumbnail name="thumbnail_id"
-					:images="{{ $options }}"
+					:artworks="{{ $artworks }}"
 					folder="http://susako.dock/storage/image/"
 					@if ($category->thumbnail)
 						value="{{ $category->thumbnail->id }}"
 					@endif>
 				</select-thumbnail>
-			</div>
-			
+			</div>			
 
 			<div class="field is-grouped">
 				<div class="control">

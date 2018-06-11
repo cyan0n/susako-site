@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 69);
+/******/ 	return __webpack_require__(__webpack_require__.s = 73);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -43196,14 +43196,18 @@ if (false) {
 /* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(70);
+module.exports = __webpack_require__(74);
 
 
 /***/ }),
-/* 70 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -43222,7 +43226,7 @@ window.Vue = __webpack_require__(35);
  */
 
 Vue.component('example-component', __webpack_require__(38));
-Vue.component('select-thumbnail', __webpack_require__(71));
+Vue.component('select-thumbnail', __webpack_require__(75));
 
 var admin = new Vue({
 	el: '#admin',
@@ -43243,15 +43247,15 @@ file.onchange = function () {
 };*/
 
 /***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(72)
+var __vue_script__ = __webpack_require__(76)
 /* template */
-var __vue_template__ = __webpack_require__(73)
+var __vue_template__ = __webpack_require__(77)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43290,7 +43294,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 72 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43309,7 +43313,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['folder', 'images', 'name', 'value'],
+  props: ['artworks', 'folder', 'name', 'value'],
   mounted: function mounted() {
     this.val = this.value;
   },
@@ -43321,7 +43325,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 73 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43365,29 +43369,31 @@ var render = function() {
         [
           _c("option", { attrs: { selected: "" } }),
           _vm._v(" "),
-          _vm._l(_vm.images, function(image, index) {
-            return _c("option", { key: index, domProps: { value: image } }, [
-              _vm._v(_vm._s(image))
-            ])
+          _vm._l(_vm.artworks, function(artwork, index) {
+            return _c(
+              "option",
+              { key: index, domProps: { value: artwork.id } },
+              [_vm._v(_vm._s(artwork.id))]
+            )
           })
         ],
         2
       ),
       _vm._v(" "),
-      _vm._l(_vm.images, function(image, index) {
+      _vm._l(_vm.artworks, function(artwork, index) {
         return _c(
           "div",
           {
             key: index,
             staticClass: "thumbnail-option",
-            class: { selected: image == _vm.val },
+            class: { selected: artwork.id == _vm.val },
             on: {
               click: function($event) {
-                _vm.val = image
+                _vm.val = artwork.id
               }
             }
           },
-          [_c("img", { attrs: { src: _vm.folder + image } })]
+          [_c("img", { attrs: { src: _vm.folder + artwork.path } })]
         )
       })
     ],
