@@ -11587,6 +11587,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: relative;
   border: 1px solid #7a7a7a;
   padding: 5px;
@@ -11598,6 +11601,22 @@ body {
   font-weight: bold;
   text-decoration: none;
   position: absolute;
-  bottom: 5px;
+  z-index: 10;
+  font-size: 1.3rem;
+}
+
+.artwork-gallery .category .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.artwork-gallery .category:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 

@@ -1,6 +1,7 @@
 <template>
 	<a :href="href" ref="wrapper" class="category">
 		<h3>{{ title }}</h3>
+		<div class="overlay"></div>
 		<img ref="image" :src="image" @load="loaded"/>
 	</a>
 </template>

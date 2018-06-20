@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-    <h2 class="title is-2">Home</h2>
     <artwork-gallery>
 		<template slot="categories">			
 			@foreach ($categories as $category)

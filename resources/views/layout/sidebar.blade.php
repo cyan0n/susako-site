@@ -1,5 +1,5 @@
 <aside id="sidebar">
-	<img id="logo" src="{{ asset('images/logo.png') }}">
+	{{-- <img id="logo" src="{{ asset('images/logo.png') }}"> --}}
 	<div class="menu">
 		<ul class="menu-list">
 			<li>
