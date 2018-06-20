@@ -7,9 +7,9 @@
 				@foreach ($main_categories as $category)
 					<a href="/{{ $category->url_name }}">{{ $category->name }}</a>
 				@endforeach
-				<a href="/{{ route('web.about') }}">About</a>
-				<a href="/{{ route('web.commission') }}">Commission</a>
-				<a href="/{{ route('web.contact') }}">Contact</a>
+				<a href="/{{ route('web.about') }}" class="is-hidden">About</a>
+				<a href="/{{ route('web.commission') }}" class="is-hidden">Commission</a>
+				<a href="/{{ route('web.contact') }}" class="is-hidden">Contact</a>
 			</li>
 		</ul>
 	</div>
