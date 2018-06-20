@@ -64,4 +64,12 @@ class Category extends Model
         $path .= $this->url_name.'/';
         return $path;
     }
+
+    public function href()
+    {
+        if (!empty($this->category_id)) {
+            return route('web.sub-category', ['main_category' => $this->macroCategory->url_name, 'sub_category' => $this->url_name]);
+        }
+        return route('web.category', ['main_category' => $this->url_name]);
+    }
 }
