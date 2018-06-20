@@ -40,7 +40,9 @@ html, body {
 		grid-area:  main;
 	}
 }
-
+.category-gallery {
+	display: flex;
+}
 .artwork-gallery {
 	display: flex;
 	.columns {
@@ -57,6 +59,22 @@ html, body {
 		margin-bottom: 6px;
 		img {
 			display: block
+		}
+	}
+	.category {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: relative;
+		border: 1px solid $grey;
+		padding: 5px;
+		h3 {
+			color: $white-ter;
+			text-shadow: 0px 0px 2px black;
+			font-weight: bold;
+			text-decoration: none;
+			position: absolute;
+			bottom: 5px;
 		}
 	}
 }

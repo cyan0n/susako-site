@@ -11,15 +11,13 @@
 			'image',
 			'index'
 		],
-		created() {
-			this.EventBus.$emit('image', this.image);
-		},
 		methods: {
 			click() {
 				this.EventBus.$emit('open', this.index);
 			},
 			loaded() {
-				this.EventBus.$emit('load', this.$refs.wrapper, this.image, this.index);
+				this.EventBus.$emit('gallery',this.image, this.index);
+				this.EventBus.$emit('layout');
 			}
 		}
 	}

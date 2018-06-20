@@ -2,6 +2,7 @@
     <div class="artwork-gallery" style="position:relative">
         <!-- slot for all Artworks -->
         <div class="artwork-gallery-column" ref="artworks"  style="position:absolute;visibility: hidden;">
+            <slot name="categories"></slot>
             <slot></slot>
         </div>
         <div ref="columns" class="columns">
@@ -21,31 +22,33 @@
         components: {
             'gallery': VueGallery
         },
-
         data() {
             return {
                 EventBus: new Vue(),
                 GalleryIndex: null,
                 GalleryImages: [],
                 loaded: 0,
-                children: [],
                 current: 0
             }
         },
+        computed: {
+            count: function() {
+                return this.$refs.artworks.children.length;
+            }
+        },
         created() {
-            this.EventBus.$on('open', index => this.GalleryIndex = parseInt(index));
-            
-            this.EventBus.$on('load', (elem, img, index) => {
-                this.children[index] = elem;
-                this.GalleryImages[index] = img;
 
-                if (++this.loaded == this.$refs.artworks.children.length) {
-                    this.sort();
+            this.EventBus.$on('layout', (elem, img, index) => {
+                if(++this.loaded == this.count) {
+                    this.sort_new();
                 }
             })
 
-            window.onresize = this.sort;
+            this.EventBus.$on('gallery', (img, index) => this.GalleryImages[index] = img);
 
+            this.EventBus.$on('open', index => this.GalleryIndex = parseInt(index));
+
+            window.onresize = this.sort_new;
         },
         mounted() {
             this.EventBus.$emit('ready');
@@ -56,12 +59,14 @@
             }
         },
         methods: {
-            sort: function () {
-                let counters= this.resetCounters();
+            sort_new: function() {
+                let counters = this.resetCounters();
                 if (this.current != counters.length) {
                     this.current = counters.length;
+                    while(this.$refs.artworks.children.length) {
+                        const node = this.$refs.artworks.children[0];
+                        const img = node.querySelector('img');
 
-                    this.children.forEach((child, i) => {
                         let pos = 0;
                         // Find lowest, right-most counter
                         counters.forEach((counter, j) => {
@@ -70,11 +75,9 @@
                             }
                         })
 
-                        // Append Artwork to lowest, right-most column position
-                        this.$refs.columns.children[pos].appendChild(child);
-
-                        counters[pos] += child.offsetHeight;
-                    })
+                        this.$refs.columns.children[pos].appendChild(node);
+                        counters[pos] += node.offsetHeight;
+                    }
                 }
             },
             resetCounters: function() {
