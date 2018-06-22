@@ -1,7 +1,9 @@
 @extends('admin.layout.admin')
 
+@section('breadcrumbs', Breadcrumbs::render('category', $category))
+
 @section('content')
-	<div class="container">
+	<div class="container">		
 		<p class="title is-2">{{ $category->name }}</p>
 		<p class="subtitle is-6 has-text-grey-light">({{ $category->url_name }})</p>
 

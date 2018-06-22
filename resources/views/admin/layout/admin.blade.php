@@ -19,10 +19,15 @@
             <div class="navbar-brand">
                 <a href="{{ route('dashboard') }}" class="navbar-item">Susako Admin</a>
             </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    
+                </div>
+            </div>
         </nav>
         {{-- Content --}}
         <section id="main" class="section">
-            {{-- TODO: Add breadcrumbs --}}
+            @yield('breadcrumbs')
             @yield('content')
         </section>
     </div>

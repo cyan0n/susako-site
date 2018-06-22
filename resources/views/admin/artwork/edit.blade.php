@@ -1,5 +1,9 @@
 @extends('admin.layout.admin')
 
+@section('breadcrumbs')
+	{{ Breadcrumbs::render('artwork', $artwork) }}
+@endsection
+
 @section('content')
 	<div class="container">
 		<h2 class="title">Edit {{ $artwork->name }}</h2>
