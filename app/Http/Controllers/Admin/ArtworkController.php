@@ -39,8 +39,12 @@ class ArtworkController extends Controller
             )
         );
         // Save file
-        $request->file('image')->storeAs('image/', $artwork->path(), 'public');
-        return redirect()->action('CategoryController@show', $category);
+		$request->file('image')->storeAs('image/', $artwork->path(), 'public');
+
+		// Update Parent Category update_at
+		$category->touch();
+		
+        return redirect()->action('Admin\CategoryController@show', $category);
     }
 
     /**
@@ -64,7 +68,10 @@ class ArtworkController extends Controller
     public function update(Request $request, Category $category, Artwork $artwork)
     {
         $artwork->update(request()->all());
-        $artwork->save();
+		$artwork->save();
+
+		// Update Parent Category update_at
+		$category->touch();
 
         return redirect()->action('Admin\CategoryController@show', $category);
     }
@@ -78,6 +85,10 @@ class ArtworkController extends Controller
     public function destroy(Category $category, Artwork $artwork)
     {
         $artwork->delete();
+
+		// Update Parent Category update_at
+		$category->touch();
+
         return redirect()->action('Admin\CategoryController@show', $category);
     }
 }
