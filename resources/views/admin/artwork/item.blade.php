@@ -7,10 +7,10 @@
 			<img src="{{ $artwork->image() }}" style="height:50px">
 		</div>
 		<div class="level-item">
-			<a href="{{ action('ArtworkController@edit', [$artwork->category, $artwork]) }}" class="button is-success">Edit</a>
+			<a href="{{ action('Admin\ArtworkController@edit', [$artwork->category, $artwork]) }}" class="button is-success">Edit</a>
 		</div>
 		<div class="level-item">
-			{{ Form::open(['action' => ['ArtworkController@destroy', $artwork->category, $artwork]]) }}
+			{{ Form::open(['action' => ['Admin\ArtworkController@destroy', $artwork->category, $artwork]]) }}
 				@method('delete')
 				<input type="submit" value="Delete" class="button is-danger">
 			{{ Form::close() }}

@@ -9,4 +9,6 @@ Route::view('/', 'admin/dashboard')->name('dashboard');
 Route::resource('categories', 'CategoryController');
 
 // Artworks (Images)
-Route::resource('categories/{category}/image', 'ArtworkController')->except([ 'index', 'show' ])->parameters(['image' => 'artwork']);
+Route::resource('categories/{category}/image', 'ArtworkController')
+	->except([ 'index', 'show' ])
+	->parameters(['image' => 'artwork']);

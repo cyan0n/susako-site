@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -48,9 +49,9 @@ class CategoryController extends Controller
 
         Category::create(request()->all());
         if (request()->category_id) {
-            return redirect()->action('CategoryController@show', ['id' => request()->category_id]);
+            return redirect()->action('Admin\CategoryController@show', ['id' => request()->category_id]);
         } else {
-            return redirect()->action('CategoryController@index');
+            return redirect()->action('Admin\CategoryController@index');
         }
     }
 
@@ -90,9 +91,9 @@ class CategoryController extends Controller
         $category->update(request()->all());
         $category->save();
         if (request()->category_id) {
-            return redirect()->action('CategoryController@show', ['id' => request()->category_id]);
+            return redirect()->action('Admin\CategoryController@show', ['id' => request()->category_id]);
         } else {
-            return redirect()->action('CategoryController@index');
+            return redirect()->action('Admin\CategoryController@index');
         }
     }
 
@@ -107,9 +108,9 @@ class CategoryController extends Controller
         $parent_id = $category->category_id;
         $category->delete();
         if ($parent_id) {
-            return redirect()->action('CategoryController@show', ['id' => $parent_id]);
+            return redirect()->action('Admin\CategoryController@show', ['id' => $parent_id]);
         } else {
-            return redirect()->action('CategoryController@index');
+            return redirect()->action('Admin\CategoryController@index');
         }
     }
 }

@@ -1,23 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Artwork;
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ArtworkController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Category $category)
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -53,17 +44,6 @@ class ArtworkController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Artwork  $artwork
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category, Artwork $artwork)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Artwork  $artwork
@@ -86,7 +66,7 @@ class ArtworkController extends Controller
         $artwork->update(request()->all());
         $artwork->save();
 
-        return redirect()->action('CategoryController@show', $category);
+        return redirect()->action('Admin\CategoryController@show', $category);
     }
 
     /**
@@ -98,6 +78,6 @@ class ArtworkController extends Controller
     public function destroy(Category $category, Artwork $artwork)
     {
         $artwork->delete();
-        return redirect()->action('CategoryController@show', $category);
+        return redirect()->action('Admin\CategoryController@show', $category);
     }
 }

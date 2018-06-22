@@ -4,13 +4,13 @@
 	</div>
 	<div class="level-right">
 		<div class="level-item">
-			<a href="{{ action('CategoryController@show', ['id' => $category->id]) }}" class="button is-info">Open</a>
+			<a href="{{ action('Admin\CategoryController@show', ['id' => $category->id]) }}" class="button is-info">Open</a>
 		</div>
 		<div class="level-item">
-			<a href="{{ action('CategoryController@edit', ['id' => $category->id]) }}" class="button is-success">Edit</a>
+			<a href="{{ action('Admin\CategoryController@edit', ['id' => $category->id]) }}" class="button is-success">Edit</a>
 		</div>
 		<div class="level-item">
-			{{ Form::open(['action' => ['CategoryController@destroy', $category]]) }}
+			{{ Form::open(['action' => ['Admin\CategoryController@destroy', $category]]) }}
 				@method('delete')
 				<input type="submit" value="Delete" class="button is-danger">
 			{{ Form::close() }}

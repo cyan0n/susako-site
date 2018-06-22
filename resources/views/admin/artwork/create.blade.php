@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2 class="title">New Image</h2>
-        {{ Form::open(['action' => ['ArtworkController@store', $category->id], 'files' => true]) }}
+        {{ Form::open(['action' => ['Admin\ArtworkController@store', $category->id], 'files' => true]) }}
             @include('admin.artwork.form')
             <div class="field is-grouped">
                 <div class="control">

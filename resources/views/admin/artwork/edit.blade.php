@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<h2 class="title">Edit {{ $artwork->name }}</h2>
-		{{ Form::model($artwork, ['action' => ['ArtworkController@update', $artwork->category, $artwork]]) }}
+		{{ Form::model($artwork, ['action' => ['Admin\ArtworkController@update', $artwork->category, $artwork]]) }}
 			@method('put')
 			@include('admin.artwork.form')
 			<div class="field is-grouped">

@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<h2 class="title">Edit {{ $category->name }}</h2>
-		{{ Form::model($category, ['action' => ['CategoryController@update', $category]]) }}
+		{{ Form::model($category, ['action' => ['Admin\CategoryController@update', $category]]) }}
 			@method('put')
 			@include('admin.category.form')
 

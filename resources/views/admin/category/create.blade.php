@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2 class="title">New Category</h2>
-        {{ Form::open(['action' => 'CategoryController@store']) }}
+        {{ Form::open(['action' => 'Admin\CategoryController@store']) }}
             @include('admin.category.form')
             <div class="field is-grouped">
                 <div class="control">

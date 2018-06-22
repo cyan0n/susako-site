@@ -19,7 +19,7 @@
 				</div>
 				<div class="left-right">
 					<div class="level-item">
-						<a href="{{ action('CategoryController@create', ['id' => $category->id]) }}" class="button is-primary">Create New Sub-Category</a>
+						<a href="{{ action('Admin\CategoryController@create', ['id' => $category->id]) }}" class="button is-primary">Create New Sub-Category</a>
 					</div>
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 			</div>
 			<div class="left-right">
 				<div class="level-item">
-					<a href="{{ action('ArtworkController@create', ['id' => $category->id]) }}" class="button is-primary">Add Image</a>
+					<a href="{{ action('Admin\ArtworkController@create', ['id' => $category->id]) }}" class="button is-primary">Add Image</a>
 				</div>
 			</div>
 		</div>

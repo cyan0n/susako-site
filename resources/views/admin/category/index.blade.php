@@ -9,7 +9,7 @@
             </div>
             <div class="level-right">
                 <div class="level-item">
-                    <a href="{{ action('CategoryController@create') }}" class="button is-primary">Create New Category</a>
+                    <a href="{{ action('Admin\CategoryController@create') }}" class="button is-primary">Create New Category</a>
                 </div>
             </div>
         </div>
