@@ -3,15 +3,15 @@ services:
 
   app:
     restart: always
-    image: esimple/laravel:latest
+    image: laravel:7.1
     volumes:
       - ./:/var/www
     network_mode: bridge
     environment:
-      DB_HOST: "host.docker.internal"
+      DB_HOST: "172.16.1.100:3356"
       DB_DATABASE: "susako"
       DB_USERNAME: "susako"
-      DB_PASSWORD: "secret"
+      DB_PASSWORD: "password"
       DB_CONNECTION: "mysql"
       APP_URL: http://susako.dock
       VIRTUAL_HOST: "susako.dock"
