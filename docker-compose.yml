@@ -6,6 +6,7 @@ services:
     image: laravel:7.1
     volumes:
       - ./:/var/www
+      - ./storage/app/public/:/var/www/public/storage
     network_mode: bridge
     environment:
       DB_HOST: "172.16.1.100:3356"
