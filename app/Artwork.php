@@ -30,7 +30,12 @@ class Artwork extends Model
     public function category()
     {
         return $this->belongsTo('App\Category');
-    }
+	}
+	
+	public function thumbnailOf()
+	{
+		return $this->hasOne('App\Category', 'thumbnail_id');
+	}
 
     public function image()
     {

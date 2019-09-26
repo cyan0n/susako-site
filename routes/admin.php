@@ -10,6 +10,7 @@ Route::get('/', function() {
 
 // Categories
 Route::resource('categories', 'CategoryController');
+Route::put('categories/{category}/thumbnail', 'CategoryController@setThumbnail');
 
 // Artworks (Images)
 Route::resource('categories/{category}/image', 'ArtworkController')

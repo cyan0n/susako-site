@@ -7,6 +7,16 @@
 			<img src="{{ $artwork->image() }}" style="height:50px">
 		</div>
 		<div class="level-item">
+			@if ($artwork->thumbnailOf)
+				Main Image
+			@else
+				{{ Form::open(['method' => 'put', 'action' => ['Admin\CategoryController@setThumbnail', $artwork->category->id]]) }}
+					{{ Form::hidden('artwork_id', $artwork->id) }}
+					{{ Form::submit('Set as Main', ["class" => "button"])}}
+				{{ Form::close() }}
+			@endif
+		</div>
+		<div class="level-item">
 			<a href="{{ action('Admin\ArtworkController@edit', [$artwork->category, $artwork]) }}" class="button is-success">Edit</a>
 		</div>
 		<div class="level-item">

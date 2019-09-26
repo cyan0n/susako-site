@@ -41,8 +41,12 @@ class ArtworkController extends Controller
         // Save file
 		$request->file('image')->storeAs('image/', $artwork->path(), 'public');
 
-		// Update Parent Category update_at
-		$category->touch();
+		if (!$category->thumbnail) {
+			$category->thumbnail()->associate($artwork)->save();
+		} else {
+			// Update Parent Category update_at
+			$category->touch();
+		}
 		
         return redirect()->action('Admin\CategoryController@show', $category);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Artwork;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -95,7 +96,15 @@ class CategoryController extends Controller
         } else {
             return redirect()->action('Admin\CategoryController@index');
         }
-    }
+	}
+	
+	public function setThumbnail(Request $request, Category $category)
+	{
+		$artwork = Artwork::find($request->artwork_id);
+		$category->thumbnail()->associate($artwork)->save();
+
+		return redirect()->action('Admin\CategoryController@show', ['id' => $category->id]);
+	}
 
     /**
      * Remove the specified resource from storage.

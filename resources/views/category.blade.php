@@ -7,7 +7,9 @@
 			@foreach ($category->subCategories as $subCategory)
 				<category
 					href="{{ $subCategory->href() }}"
-					image="{{ $subCategory->thumbnail->image() }}"
+					@if ($subCategory->thumbnail)
+						image="{{ $subCategory->thumbnail->image() }}"
+					@endif
 					index="{{ $loop->index }}"
 					title="{{ $subCategory->name }}">
 				</category>
