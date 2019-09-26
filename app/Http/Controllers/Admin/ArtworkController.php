@@ -74,6 +74,9 @@ class ArtworkController extends Controller
         $artwork->update(request()->all());
 		$artwork->save();
 
+        // Save file
+		$request->file('image')->storeAs('image/', $artwork->path(), 'public');
+
 		// Update Parent Category update_at
 		$category->touch();
 
