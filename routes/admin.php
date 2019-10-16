@@ -16,3 +16,4 @@ Route::put('categories/{category}/thumbnail', 'CategoryController@setThumbnail')
 Route::resource('categories/{category}/image', 'ArtworkController')
 	->except([ 'index', 'show' ])
 	->parameters(['image' => 'artwork']);
+Route::put('categories/{category}/move/{artwork}', 'ArtworkController@move');

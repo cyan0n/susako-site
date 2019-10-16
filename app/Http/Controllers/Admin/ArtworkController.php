@@ -6,6 +6,7 @@ use App\Artwork;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ArtworkController extends Controller
 {
@@ -74,14 +75,31 @@ class ArtworkController extends Controller
         $artwork->update(request()->all());
 		$artwork->save();
 
-        // Save file
-		$request->file('image')->storeAs('image/', $artwork->path(), 'public');
+		// Save file
+		if ($request->file('image')) {
+			$request->file('image')->storeAs('image/', $artwork->path(), 'public');
+		}		
 
 		// Update Parent Category update_at
 		$category->touch();
 
         return redirect()->action('Admin\CategoryController@show', $category);
-    }
+	}
+	
+	public function move(Request $request, Category $category, Artwork $artwork)
+	{
+		$from_path = $artwork->path();
+		$to = Category::find($request->input('to'));
+		$artwork->category()->associate($to);
+		$artwork->save();
+
+		Storage::disk('public')->move('image/'.$from_path, 'image/'.$artwork->path);
+
+		$category->touch();
+		$to->touch();
+
+		return redirect()->action('Admin\CategoryController@show', $category);
+	}
 
     /**
      * Remove the specified resource from storage.
