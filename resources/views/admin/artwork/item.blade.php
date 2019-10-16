@@ -18,15 +18,17 @@
 		</div>
 		<div class="level-item">
 			{{ Form::open(['method' => 'put', 'action' => ['Admin\ArtworkController@move', $artwork->category, $artwork]]) }}
-				<select name="to">
-					<option value="">- Segli Categoria -</option>
-					@foreach ($main_categories as $category)
-						<option value="{{ $category->id }}">{{ $category->name }}</option>
-						@foreach ($category->subCategories as $subCategories)
-							<option value="{{ $subCategories->id }}"> &rsaquo; {{ $subCategories->name }}</option>
+				<div class="select">
+					<select name="to">
+						<option value="">- Segli Categoria -</option>
+						@foreach ($main_categories as $category)
+							<option value="{{ $category->id }}">{{ $category->name }}</option>
+							@foreach ($category->subCategories as $subCategories)
+								<option value="{{ $subCategories->id }}"> &rsaquo; {{ $subCategories->name }}</option>
+							@endforeach
 						@endforeach
-					@endforeach
-				</select>
+					</select>
+				</div>
 				<input type="submit" value="Move" class="button">
 			{{ Form::close() }}
 		</div>
